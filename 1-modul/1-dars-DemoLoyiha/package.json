@@ -1,0 +1,17 @@
+{
+  "name": "1-dars-demoloyiha",
+  "version": "1.0.0",
+  "description": "ExpressJs recap lessons",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ExpressJs"
+  ],
+  "author": "Abdulbosit Tuychiev",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
