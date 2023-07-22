@@ -4,14 +4,23 @@ const router = Router()
 
 
 router.get('/', (req, res) => {
-    res.render('index')
+    res.render('index', {
+        title: "APP | Home",
+        isHome: true,
+    })
 })
 
 router.get('/products', (req, res) => {
-    res.render('products')
+    res.render('products', {
+        title: "APP | Products",
+        isProducts: true,
+    })
 })
 router.get('/add', (req, res) => {
-    res.render('add')
+    res.render('add', {
+        title: "APP | Add",
+        isAdd: true,
+    })
 })
 
 export default router
