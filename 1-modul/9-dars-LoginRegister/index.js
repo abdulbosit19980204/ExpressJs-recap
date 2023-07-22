@@ -12,6 +12,7 @@ app.set('view engine', 'hbs')
 app.set('views', './views')
 
 // Middlewares
+app.use(express.urlencoded({ extended: true }))
 app.use(authRoutes)
 app.use(productRoutes)
 
