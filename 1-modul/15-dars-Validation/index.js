@@ -1,7 +1,10 @@
 import express from "express"
 import { engine, create } from "express-handlebars"
-import * as dotenv from "dotenv"
 import mongoose from "mongoose"
+import flash from "connect-flash"
+import session from "express-session"
+import * as dotenv from "dotenv"
+
 
 // Routers 
 import authRoutes from "./routes/auth.js"
@@ -16,9 +19,14 @@ app.set('view engine', 'hbs')
 app.set('views', './views')
 
 // Middlewares
-app.use(express.urlencoded({ extended: true }))
-app.use(express.static('public'))
-app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
+app.use(express.json());
+
+//show the error 
+app.use(session({ secret: "tatu", resave: false, saveUninitialized: false }))
+app.use(flash())
+
 app.use(authRoutes)
 app.use(productRoutes)
 
