@@ -7,6 +7,9 @@ import { generateJWTToken } from "../services/token.js"
 const router = Router()
 
 router.get('/login', (req, res) => {
+    if (req.cookies.token) {
+        res.redirect('/')
+    }
     res.render('login', {
         title: "APP | Login",
         isLogin: true,
@@ -16,6 +19,9 @@ router.get('/login', (req, res) => {
 })
 
 router.get('/register', (req, res) => {
+    if (req.cookies.token) {
+        res.redirect('/')
+    }
     res.render('register', {
         title: "APP | Register",
         isRegister: true,
@@ -23,7 +29,11 @@ router.get('/register', (req, res) => {
     })
 })
 
-// Posts
+router.get('/logout', (req, res) => {
+        res.clearCookie('token')
+        res.redirect('/')
+    })
+    // Posts
 router.post('/register', async(req, res) => {
     const { firstName, lastName, email, password } = req.body
     if (!firstName || !lastName || !email || !password) {
