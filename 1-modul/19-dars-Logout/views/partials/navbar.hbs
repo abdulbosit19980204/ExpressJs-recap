@@ -1,0 +1,50 @@
+<header class="p-3 text-bg-dark">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <i class="bi bi-airplane-engines text-danger mx-2"></i>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          {{#if isHome}}
+          <li><a href="/" class="nav-link px-2 text-black bg-light">Home</a></li>
+          {{else}}
+          <li><a href="/" class="nav-link px-2 text-white">Home</a></li>
+          {{/if}}
+          {{#if isProducts}}
+          <li><a href="/products" class="nav-link px-2 text-black bg-light">Products</a></li>
+          {{else}}
+          <li><a href="/products" class="nav-link px-2 text-white ">Products</a></li>
+          {{/if}}
+          {{#if isAdd}}
+          <li><a href="/add" class="nav-link px-2 text-black bg-light">Add</a></li>
+          {{else}}
+          <li><a href="/add" class="nav-link px-2 text-white">Add</a></li>
+          {{/if}}
+          <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+          <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+        </ul>
+
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+          <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+        </form>
+
+        <div class="text-end">
+          {{#if token}}
+          <a href="/login" class="btn btn-outline-danger me-2 active">Logout</a>
+          {{else}}
+          {{#if isLogin}}
+          <a href="/login" class="btn btn-outline-light me-2 active">Login</a>
+          {{else}}
+          <a href="/login" class="btn btn-outline-light me-2">Login</a>
+          {{/if}}
+          {{#if isRegister}}
+          <a href="/register" class="btn btn-warning active">Sign-up</a>
+          {{else}}
+          <a href="/register" class="btn btn-outline-warning">Sign-up</a>
+          {{/if}}
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </header>
