@@ -2,6 +2,7 @@ import { Router } from "express"
 import User from "../models/User.js"
 import bcrypt from "bcrypt"
 import flash from "connect-flash"
+import { generateJWTToken } from "../services/token.js"
 
 const router = Router()
 
@@ -44,8 +45,9 @@ router.post('/register', async(req, res) => {
         email: email,
         password: hashedPassword,
     }
-    await User.create(userData)
-
+    const user = await User.create(userData)
+    const token = generateJWTToken(user._id);
+    res.cookie("token", token, { httpOnly: true, secure: true })
     res.redirect('/')
 
 })
@@ -72,7 +74,8 @@ router.post('/login', async(req, res) => {
         res.redirect('/login')
         return
     }
-    console.log(existUser);
+    const token = generateJWTToken(existUser._id);
+    res.cookie("token", token, { httpOnly: true, secure: true })
     res.redirect('/')
 })
 
