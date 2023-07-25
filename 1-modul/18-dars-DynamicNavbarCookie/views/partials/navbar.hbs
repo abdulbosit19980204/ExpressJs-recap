@@ -30,6 +30,9 @@
         </form>
 
         <div class="text-end">
+          {{#if token}}
+          <a href="/login" class="btn btn-outline-danger me-2 active">Logout</a>
+          {{else}}
           {{#if isLogin}}
           <a href="/login" class="btn btn-outline-light me-2 active">Login</a>
           {{else}}
@@ -39,6 +42,7 @@
           <a href="/register" class="btn btn-warning active">Sign-up</a>
           {{else}}
           <a href="/register" class="btn btn-outline-warning">Sign-up</a>
+          {{/if}}
           {{/if}}
         </div>
       </div>

@@ -3,12 +3,16 @@ import { engine, create } from "express-handlebars"
 import mongoose from "mongoose"
 import flash from "connect-flash"
 import session from "express-session"
+import varMiddleware from "./middlewares/var.js"
+import cookieParser from "cookie-parser"
 import * as dotenv from "dotenv"
 
 
 // Routers 
 import authRoutes from "./routes/auth.js"
 import productRoutes from "./routes/product.js"
+
+
 
 dotenv.config()
 
@@ -26,6 +30,8 @@ app.use(express.json());
 //show the error 
 app.use(session({ secret: "tatu", resave: false, saveUninitialized: false }))
 app.use(flash())
+app.use(cookieParser())
+app.use(varMiddleware)
 
 app.use(authRoutes)
 app.use(productRoutes)
