@@ -5,8 +5,11 @@ import userMiddleware from "../middlewares/user.js"
 const router = Router()
 
 
-router.get('/', (req, res) => {
+router.get('/', async(req, res) => {
+    const products = await Products.find().lean()
+    console.log(products);
     res.render('index', {
+        products: products,
         title: "APP | Home",
         isHome: true,
     })
