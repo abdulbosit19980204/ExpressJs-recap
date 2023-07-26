@@ -3,13 +3,11 @@ import User from "../models/User.js"
 import bcrypt from "bcrypt"
 import flash from "connect-flash"
 import { generateJWTToken } from "../services/token.js"
-
+import registerMiddleware from "../middlewares/register.js"
 const router = Router()
 
-router.get('/login', (req, res) => {
-    if (req.cookies.token) {
-        res.redirect('/')
-    }
+router.get('/login', registerMiddleware, (req, res) => {
+
     res.render('login', {
         title: "APP | Login",
         isLogin: true,
@@ -18,10 +16,8 @@ router.get('/login', (req, res) => {
     })
 })
 
-router.get('/register', (req, res) => {
-    if (req.cookies.token) {
-        res.redirect('/')
-    }
+router.get('/register', registerMiddleware, (req, res) => {
+
     res.render('register', {
         title: "APP | Register",
         isRegister: true,
