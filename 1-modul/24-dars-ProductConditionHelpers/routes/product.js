@@ -7,9 +7,9 @@ const router = Router()
 
 router.get('/', async(req, res) => {
     const products = await Products.find().lean()
-    console.log(products);
+    console.log(req.userId);
     res.render('index', {
-        products: products,
+        products: products.reverse(),
         title: "APP | Home",
         isHome: true,
     })
@@ -32,7 +32,7 @@ router.get('/add', authMiddleware, (req, res) => {
 
 // Posts
 
-router.post('/add-products', userMiddleware, async(req, res) => {
+router.post('/add-products', async(req, res) => {
     const { title, description, image, price } = req.body
     if (!title || !description || !image || !price) {
         req.flash('addProductError', "All fields are required")

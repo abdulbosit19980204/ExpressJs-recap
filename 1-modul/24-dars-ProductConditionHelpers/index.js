@@ -6,7 +6,7 @@ import session from "express-session"
 import varMiddleware from "./middlewares/var.js"
 import cookieParser from "cookie-parser"
 import * as dotenv from "dotenv"
-
+import userMiddleware from "./middlewares/user.js"
 
 // Routers 
 import authRoutes from "./routes/auth.js"
@@ -32,6 +32,7 @@ app.use(session({ secret: "tatu", resave: false, saveUninitialized: false }))
 app.use(flash())
 app.use(cookieParser())
 app.use(varMiddleware)
+app.use(userMiddleware)
 
 app.use(authRoutes)
 app.use(productRoutes)
