@@ -12,12 +12,13 @@ import userMiddleware from "./middlewares/user.js"
 import authRoutes from "./routes/auth.js"
 import productRoutes from "./routes/product.js"
 
-
+// Helpers
+import utils from "./util/index.js"
 
 dotenv.config()
 
 const app = express()
-const hbs = create({ defaultLayout: 'main', extname: 'hbs' })
+const hbs = create({ defaultLayout: 'main', extname: 'hbs', helpers: utils })
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs')
 app.set('views', './views')

@@ -1,15 +1,14 @@
 import { Router } from "express";
 import Products from "../models/Product.js";
 import authMiddleware from "../middlewares/auth.js"
-import userMiddleware from "../middlewares/user.js"
 const router = Router()
 
 
 router.get('/', async(req, res) => {
     const products = await Products.find().lean()
-    console.log(req.userId);
     res.render('index', {
         products: products.reverse(),
+        userId: req.userId ? req.userId.toString() : null,
         title: "APP | Home",
         isHome: true,
     })
