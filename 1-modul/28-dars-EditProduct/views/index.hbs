@@ -12,7 +12,7 @@
                   <a href="/product/{{_id}}"  type="button" class="btn btn-sm btn-outline-secondary">View</a>
                   {{#if @root.token }}
                   {{#ifequal @root.userId user}}
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  <a href="/edit-product/{{_id}}" type="button" class="btn btn-sm btn-outline-secondary">Edit</a>
                   <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
                   {{/ifequal}}
                   {{/if}}
