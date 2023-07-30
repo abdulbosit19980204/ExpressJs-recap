@@ -68,10 +68,11 @@ router.post('/edit-product/:id', async(req, res) => {
     const id = req.params.id
     if (!title || !description || !image || !price) {
         req.flash('errorEditProduct', "All fields are required")
-        res.redirect('/edit-product')
+        res.redirect(`/edit-product/${id}`)
         return
     }
-    const products = await Products.findByIdAndUpdate(id, req.body, { new: true })
+
+    await Products.findByIdAndUpdate(id, req.body, { new: true })
 
     res.redirect('/products')
 })
